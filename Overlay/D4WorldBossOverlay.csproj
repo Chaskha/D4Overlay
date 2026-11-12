@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <!-- Pas de WPF : évite le conflit WindowsBase 4.0 vs 5.0 (MSB3277)
+         que le package WebView2 déclenche via Microsoft.Web.WebView2.Wpf.dll -->
+    <UseWPF>false</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NoWarn>$(NoWarn);MSB3277</NoWarn>
+    <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages>
+    <ApplicationIcon Condition="Exists('Assets\D4Overlay.ico')">Assets\D4Overlay.ico</ApplicationIcon>
+    <AssemblyName>D4WorldBossOverlay</AssemblyName>
+    <RootNamespace>D4WorldBossOverlay</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2903.40" />
+    <PackageReference Include="Microsoft.Win32.SystemEvents" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\D4Overlay.Shared.csproj" />
+  </ItemGroup>
+
+  <!--
+    Le package WebView2 ajoute Microsoft.Web.WebView2.Wpf.dll aux références même pour un projet WinForms, ce qui provoque
+    l'avertissement MSB3277 (WindowsBase 4.0 contre 5.0). On retire cette référence AVANT la résolution des assemblys
+    (l'élément à retirer s'appelle « Reference » ; « ReferencePath » n'existe qu'après). Rien n'utilise WPF dans l'application.
+  -->
+  <Target Name="DropWebView2WpfReference" BeforeTargets="ResolveAssemblyReferences">
+    <ItemGroup>
+      <Reference Remove="@(Reference)" Condition="'%(Filename)' == 'Microsoft.Web.WebView2.Wpf'" />
+    </ItemGroup>
+  </Target>
+
+</Project>

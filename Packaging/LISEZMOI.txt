@@ -1,0 +1,75 @@
+D4 Overlay - Minuteurs d'events Diablo IV
+=========================================
+
+PREREQUIS
+- Windows 10 ou 11 (64 bits)
+- .NET 8 "Desktop Runtime" (x64) : https://dotnet.microsoft.com/download/dotnet/8.0
+  (inutile si tu as recu la version "autonome" de ce paquet)
+- Microsoft Edge WebView2 Runtime : deja present sur Windows 11 et Windows 10 a jour.
+  Il ne sert que de solution de secours : l'overlay fonctionne sans.
+
+UTILISATION
+1. Lance D4WorldBossOverlay.exe : le cadre s'affiche par-dessus le jeu
+   (le jeu doit etre en mode "fenetre sans bordure").
+2. Lance D4OverlayConfig.exe pour tout regler : alarmes (delais, sons, volume),
+   events affiches, image du cadre, police, couleurs, position des minuteurs.
+   Les changements sont pris en compte par l'overlay en moins de 10 secondes.
+
+DEMARRAGE AVEC WINDOWS
+Onglet Configuration, "Lancer l'overlay au demarrage de Windows". Seul l'overlay demarre (pas la fenetre de configuration).
+Avec "Afficher l'overlay a l'ecran" decoche, il demarre discretement, avec seulement son icone pres de l'horloge.
+Si tu deplaces le dossier de l'application, lance l'overlay une fois depuis son nouvel emplacement : il corrige lui-meme l'entree de demarrage.
+
+MENTIONS LEGALES
+D4 Overlay est un outil non officiel, realise par un fan, non affilie a Blizzard Entertainment. Diablo et Blizzard sont des marques
+de Blizzard Entertainment, Inc. Licences et mentions : LICENSES.txt (aussi dans l'onglet Infos).
+
+TAILLE DE L'OVERLAY
+Onglet Apparence, "Taille de l'overlay (%)" : de 50 a 300 %. A augmenter sur un ecran haute resolution (4K).
+
+OPACITE DE L'OVERLAY
+Onglet Apparence, "Opacite de l'overlay (%)" : de 20 a 100 %. En mode deplacement (F8), l'overlay est toujours totalement opaque.
+
+ALERTES SEULEMENT QUAND LE JEU TOURNE
+Dans chaque onglet d'event, coche "Seulement quand Diablo IV est lance" pour que les alertes de cet event restent muettes jeu ferme.
+Laisse decoche pour etre prevenu quand meme (ex. alerte World Boss 5 minutes avant, pour avoir le temps de lancer le jeu).
+L'onglet Infos indique si le jeu est detecte. Si l'executable du jeu porte un autre nom, modifie "GameProcesses" dans settings.json.
+
+SOURDINE RAPIDE
+Clic droit sur l'icone pres de l'horloge, puis "Couper les alertes sonores" (appel vocal, stream...). Rien d'autre ne change.
+Elle n'est pas memorisee : les sons reviennent au prochain demarrage de l'overlay.
+
+ALERTES SONORES SEULES
+Decoche "Afficher l'overlay a l'ecran" dans l'onglet Configuration : plus rien n'est dessine,
+les alertes sonores continuent. L'icone pres de l'horloge (zone de notification) permet de
+reafficher l'overlay, d'ouvrir la configuration ou de quitter l'application.
+
+RACCOURCIS (dans le jeu) - tous configurables dans l'onglet "Configuration"
+- F8 : mode deplacement (cadre pointille). Glisse la fenetre, puis F8 pour la verrouiller.
+      En mode deplacement, la croix rouge en haut a droite ferme l'application.
+- F5 : force le rafraichissement des donnees et des reglages.
+- Couper / retablir les alertes sonores : aucune touche par defaut (a toi d'en choisir une).
+- PageUp / PageDown : opacite de l'overlay + / -, UNIQUEMENT en mode deplacement (aucune touche en plus pendant le jeu).
+Un raccourci est global : tant que l'overlay tourne, les autres programmes ne peuvent plus utiliser cette touche.
+Si Windows refuse une touche (deja utilisee par une autre application), l'onglet le signale.
+
+DONNEES ET REGLAGES
+Tout est dans %AppData%\D4WorldBossOverlay :
+  alerts.json (alarmes), layout.json (apparence), skins\ (images), sounds\ (sons : wav, mp3, m4a, aac, wma, flac),
+  fonts\ (polices .ttf / .otf personnelles), lang\ (langues ajoutees), settings.json (langue),
+  defaults-seeded.txt (fichiers par defaut deja proposes), overlay.log, shared.log et crash.log (journaux, utiles en cas de probleme).
+
+THEME DE LA FENETRE
+En bas a droite de la fenetre de configuration : Systeme (suit le mode clair/sombre de Windows), Clair ou Sombre.
+
+LANGUES
+L'interface est en anglais par defaut. Choisis ta langue avec le selecteur (globe) en bas a droite
+du configurateur : English, Francais, Italiano, Portugues, Espanol, Deutsch, Polski, Turkce, chinois simplifie,
+coreen, japonais et russe sont fournis. Pour ajouter ou corriger une langue, voir l'onglet "Infos".
+Pour tout remettre a zero : ferme l'overlay et supprime ce dossier.
+
+DESINSTALLATION
+Supprime le dossier de l'application et le dossier %AppData%\D4WorldBossOverlay.
+
+Les donnees des events viennent de helltides.com.
+Son de confirmation de la sourdine : derive de "SWSH Whoosh 2 (ID 0573)", La Sonotheque.

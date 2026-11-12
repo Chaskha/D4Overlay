@@ -1,0 +1,34 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D4WorldBossOverlay", "Overlay\D4WorldBossOverlay.csproj", "{C17B0F5A-D260-4494-A871-E936138F856E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D4OverlayConfig", "Config\D4OverlayConfig.csproj", "{979CDE4D-195D-43BF-899D-36CD9865B88A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D4Overlay.Shared", "Shared\D4Overlay.Shared.csproj", "{164233CC-7D57-4E85-94D4-A56254C92860}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C17B0F5A-D260-4494-A871-E936138F856E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C17B0F5A-D260-4494-A871-E936138F856E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C17B0F5A-D260-4494-A871-E936138F856E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C17B0F5A-D260-4494-A871-E936138F856E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{979CDE4D-195D-43BF-899D-36CD9865B88A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{979CDE4D-195D-43BF-899D-36CD9865B88A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{979CDE4D-195D-43BF-899D-36CD9865B88A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{979CDE4D-195D-43BF-899D-36CD9865B88A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{164233CC-7D57-4E85-94D4-A56254C92860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{164233CC-7D57-4E85-94D4-A56254C92860}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{164233CC-7D57-4E85-94D4-A56254C92860}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{164233CC-7D57-4E85-94D4-A56254C92860}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

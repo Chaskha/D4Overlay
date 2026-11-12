@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>D4Overlay.Shared</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.2.1" />
+  </ItemGroup>
+
+  <!-- Cadre de l'overlay et masque de son intérieur, embarqués (pas de fichier externe à déployer). -->
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\overlay-bg.png" LogicalName="overlay-bg.png" />
+    <EmbeddedResource Include="Assets\interior-fill.png" LogicalName="interior-fill.png" />
+    <EmbeddedResource Include="Assets\skin-metal.png" LogicalName="skin-metal.png" />
+    <EmbeddedResource Include="Assets\interior-fill-metal.png" LogicalName="interior-fill-metal.png" />
+    <!-- Sons intégrés (retour sonore de la sourdine). -->
+    <EmbeddedResource Include="Assets\Sounds\*.wav" LogicalName="sfx:%(Filename)%(Extension)" />
+    <!-- Langues de l'interface (un fichier JSON par langue). -->
+    <EmbeddedResource Include="Assets\Lang\*.json" LogicalName="lang:%(Filename)%(Extension)" />
+    <!-- Toute police .ttf / .otf déposée dans Assets\Fonts est embarquée dans l'exe (voir Assets\Fonts\LISEZMOI.txt). -->
+    <EmbeddedResource Include="Assets\Fonts\*.ttf;Assets\Fonts\*.otf" LogicalName="font:%(Filename)%(Extension)" />
+  </ItemGroup>
+
+</Project>

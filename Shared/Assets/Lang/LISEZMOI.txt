@@ -1,0 +1,9 @@
+Fichiers de langue
+==================
+Un fichier JSON par langue : "cle": "texte". Le champ "_language" est le nom affiche dans le selecteur.
+Les marqueurs {0}, {1}, {0:HH:mm:ss} doivent etre conserves tels quels (ils sont remplaces a l'execution).
+\n dans un texte = retour a la ligne. Une cle absente retombe sur l'anglais.
+
+Ajouter une langue a l'application : copier en.json, le renommer (ex. pl.json), traduire, recompiler.
+Sans recompiler : deposer le fichier dans %AppData%\D4WorldBossOverlay\lang (bouton de l'onglet Infos).
+Un fichier du dossier lang qui porte le meme code qu'une langue integree la complete et la remplace.

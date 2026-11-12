@@ -1,0 +1,18 @@
+Polices personnelles
+====================
+Trois facons de rendre une police utilisable (liste du configurateur, onglet Apparence) :
+
+1. EMBARQUEE DANS L'EXE : depose ici un .ttf / .otf, puis recompile.
+   Elle fonctionne meme si elle n'est pas installee chez l'utilisateur.
+2. SANS RECOMPILER : depose le fichier dans %AppData%\D4WorldBossOverlay\fonts
+   (bouton "Dossier des polices" du configurateur), puis clique sur "Recharger".
+   Un dossier "defaults\fonts" livre avec l'application est copie automatiquement ici au premier lancement.
+3. INSTALLEE SUR WINDOWS "pour l'utilisateur" (installation par defaut depuis Windows 10) :
+   detectee automatiquement dans %LocalAppData%\Microsoft\Windows\Fonts.
+
+Le configurateur indique, sous la liste des polices, ce qui a ete charge et ce qui a echoue.
+Le detail est aussi dans %AppData%\D4WorldBossOverlay\shared.log.
+
+ATTENTION A LA LICENCE : ne redistribue que des polices dont la licence l'autorise
+(SIL Open Font License, Apache, domaine public...). Les polices fournies avec Windows
+(Segoe UI, Arial...) ne sont PAS redistribuables.

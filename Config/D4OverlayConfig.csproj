@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>D4OverlayConfig</AssemblyName>
+    <RootNamespace>D4OverlayConfig</RootNamespace>
+    <ApplicationIcon Condition="Exists('Assets\D4Overlay_Config.ico')">Assets\D4Overlay_Config.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\D4Overlay.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

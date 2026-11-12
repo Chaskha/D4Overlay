@@ -1,0 +1,17 @@
+Installeur de D4 Overlay (Inno Setup)
+=====================================
+Fabrication :  publish.bat            (zip portable + installeur)
+               publish.bat setup      (installeur seul)
+Prerequis : Inno Setup 6 ou 7 (https://jrsoftware.org/isdl.php) et le SDK .NET 8.
+
+Le script D4Overlay.iss est appele par publish.bat avec la version en parametre (/DAppVersion=...).
+Il attend l'application publiee en version autonome dans dist\setup-src\D4Overlay (publish.bat s'en charge).
+
+A SAVOIR
+- AppId (GUID dans [Setup]) : ne jamais le changer, il identifie l'application pour les mises a jour.
+- Pour changer la version : Shared\AppInfo.cs ET la ligne "set VERSION=" de publish.bat.
+- Le fichier .iss est enregistre en UTF-8 AVEC BOM (obligatoire pour les accents et les langues non latines).
+  Si ton editeur l'enregistre sans BOM, les textes accentues s'afficheront mal.
+- Les langues de l'assistant ne sont chargees que si leur fichier .isl existe chez toi : le coreen et le chinois
+  simplifie sont des traductions non officielles (a telecharger sur le site d'Inno Setup, dans le dossier Languages).
+- Test sur un Windows vierge : Windows Sandbox (Windows Pro ou Enterprise).
