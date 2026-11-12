@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="d4_background">#FF121014</color>
+    <color name="d4_icon_bg">#FF1A1416</color>
+
+    <style name="Theme.D4Overlay" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/d4_background</item>
+        <item name="android:statusBarColor">@color/d4_background</item>
+        <item name="android:navigationBarColor">@color/d4_background</item>
+    </style>
+</resources>

@@ -1,0 +1,20 @@
+{
+  "m.notif.channel": "Event-Benachrichtigungen",
+  "m.notif.text": "Beginnt in {0} Min. (um {1})",
+  "m.perm.notif": "Benachrichtigungen sind deaktiviert: Du erhältst keine Warnungen.",
+  "m.perm.exact": "Exakte Wecker sind nicht erlaubt: Warnungen können einige Minuten zu spät kommen.",
+  "m.perm.grant": "Erlauben",
+  "m.refresh": "Aktualisieren",
+  "m.refreshing": "Wird aktualisiert…",
+  "m.nextAlert": "Nächste Warnung um {0}",
+  "m.noAlert": "Keine Warnung geplant.",
+  "m.upcoming": "Nächste: {0}",
+  "m.settings": "Einstellungen",
+  "m.language": "Sprache",
+  "m.language.system": "Systemsprache",
+  "m.defaults.confirm": "Die Warnungen aller drei Events auf die Standardwerte zurücksetzen?",
+  "m.cancel": "Abbrechen",
+  "m.ok": "OK",
+  "m.sound.voice": "Stimme: {0}",
+  "m.soundNote": "Der Warnton folgt der Benachrichtigungslautstärke des Telefons und beachtet den Lautlos-Modus."
+}

@@ -1,0 +1,20 @@
+{
+  "m.notif.channel": "이벤트 알림",
+  "m.notif.text": "{0}분 후 시작 ({1})",
+  "m.perm.notif": "알림이 꺼져 있습니다. 어떤 알림도 받을 수 없습니다.",
+  "m.perm.exact": "정확한 알람이 허용되지 않았습니다. 알림이 몇 분 늦게 올 수 있습니다.",
+  "m.perm.grant": "허용",
+  "m.refresh": "새로고침",
+  "m.refreshing": "새로고침 중…",
+  "m.nextAlert": "다음 알림: {0}",
+  "m.noAlert": "예약된 알림이 없습니다.",
+  "m.upcoming": "다음: {0}",
+  "m.settings": "설정",
+  "m.language": "언어",
+  "m.language.system": "시스템 언어",
+  "m.defaults.confirm": "세 이벤트의 알림을 기본값으로 되돌릴까요?",
+  "m.cancel": "취소",
+  "m.ok": "확인",
+  "m.sound.voice": "음성: {0}",
+  "m.soundNote": "알림 소리는 휴대폰의 알림 음량을 따르며 무음 모드를 지킵니다."
+}

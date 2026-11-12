@@ -1,0 +1,20 @@
+{
+  "m.notif.channel": "Avvisi degli eventi",
+  "m.notif.text": "Inizia tra {0} min (alle {1})",
+  "m.perm.notif": "Le notifiche sono disattivate: non riceverai alcun avviso.",
+  "m.perm.exact": "Le sveglie esatte non sono consentite: gli avvisi possono arrivare con qualche minuto di ritardo.",
+  "m.perm.grant": "Consenti",
+  "m.refresh": "Aggiorna",
+  "m.refreshing": "Aggiornamento…",
+  "m.nextAlert": "Prossimo avviso alle {0}",
+  "m.noAlert": "Nessun avviso programmato.",
+  "m.upcoming": "Prossimi: {0}",
+  "m.settings": "Impostazioni",
+  "m.language": "Lingua",
+  "m.language.system": "Lingua di sistema",
+  "m.defaults.confirm": "Ripristinare gli avvisi dei tre eventi ai valori predefiniti?",
+  "m.cancel": "Annulla",
+  "m.ok": "OK",
+  "m.sound.voice": "Voce: {0}",
+  "m.soundNote": "Il suono degli avvisi segue il volume delle notifiche del telefono e rispetta la modalità silenziosa."
+}

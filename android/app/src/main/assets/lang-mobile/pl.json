@@ -1,0 +1,20 @@
+{
+  "m.notif.channel": "Alerty wydarzeń",
+  "m.notif.text": "Zaczyna się za {0} min (o {1})",
+  "m.perm.notif": "Powiadomienia są wyłączone: nie otrzymasz żadnych alertów.",
+  "m.perm.exact": "Dokładne alarmy nie są dozwolone: alerty mogą przychodzić z kilkuminutowym opóźnieniem.",
+  "m.perm.grant": "Zezwól",
+  "m.refresh": "Odśwież",
+  "m.refreshing": "Odświeżanie…",
+  "m.nextAlert": "Następny alert o {0}",
+  "m.noAlert": "Brak zaplanowanych alertów.",
+  "m.upcoming": "Następne: {0}",
+  "m.settings": "Ustawienia",
+  "m.language": "Język",
+  "m.language.system": "Język systemu",
+  "m.defaults.confirm": "Przywrócić domyślne alerty wszystkich trzech wydarzeń?",
+  "m.cancel": "Anuluj",
+  "m.ok": "OK",
+  "m.sound.voice": "Głos: {0}",
+  "m.soundNote": "Dźwięk alertów zależy od głośności powiadomień telefonu i respektuje tryb cichy."
+}

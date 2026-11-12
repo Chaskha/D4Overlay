@@ -1,0 +1,20 @@
+{
+  "m.notif.channel": "Event alerts",
+  "m.notif.text": "Starts in {0} min (at {1})",
+  "m.perm.notif": "Notifications are turned off: you will not receive any alerts.",
+  "m.perm.exact": "Exact alarms are not allowed: alerts may arrive a few minutes late.",
+  "m.perm.grant": "Allow",
+  "m.refresh": "Refresh",
+  "m.refreshing": "Refreshing…",
+  "m.nextAlert": "Next alert at {0}",
+  "m.noAlert": "No alert scheduled.",
+  "m.upcoming": "Next: {0}",
+  "m.settings": "Settings",
+  "m.language": "Language",
+  "m.language.system": "System language",
+  "m.defaults.confirm": "Reset the alerts of all three events to their default values?",
+  "m.cancel": "Cancel",
+  "m.ok": "OK",
+  "m.sound.voice": "Voice: {0}",
+  "m.soundNote": "Alert sounds follow the phone's notification volume and respect silent mode."
+}

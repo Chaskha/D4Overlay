@@ -1,0 +1,20 @@
+{
+  "m.notif.channel": "事件提醒",
+  "m.notif.text": "{0} 分钟后开始（{1}）",
+  "m.perm.notif": "通知已关闭：你将不会收到任何提醒。",
+  "m.perm.exact": "未允许精确闹钟：提醒可能会延迟几分钟。",
+  "m.perm.grant": "允许",
+  "m.refresh": "刷新",
+  "m.refreshing": "正在刷新…",
+  "m.nextAlert": "下一次提醒：{0}",
+  "m.noAlert": "没有已安排的提醒。",
+  "m.upcoming": "接下来：{0}",
+  "m.settings": "设置",
+  "m.language": "语言",
+  "m.language.system": "系统语言",
+  "m.defaults.confirm": "将三个事件的提醒恢复为默认值？",
+  "m.cancel": "取消",
+  "m.ok": "确定",
+  "m.sound.voice": "语音：{0}",
+  "m.soundNote": "提醒声音跟随手机的通知音量，并遵守静音模式。"
+}

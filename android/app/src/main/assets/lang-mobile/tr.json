@@ -1,0 +1,20 @@
+{
+  "m.notif.channel": "Etkinlik uyarıları",
+  "m.notif.text": "{0} dk sonra başlıyor ({1})",
+  "m.perm.notif": "Bildirimler kapalı: hiçbir uyarı almayacaksın.",
+  "m.perm.exact": "Tam zamanlı alarmlara izin verilmiyor: uyarılar birkaç dakika gecikebilir.",
+  "m.perm.grant": "İzin ver",
+  "m.refresh": "Yenile",
+  "m.refreshing": "Yenileniyor…",
+  "m.nextAlert": "Sonraki uyarı: {0}",
+  "m.noAlert": "Planlanmış uyarı yok.",
+  "m.upcoming": "Sonrakiler: {0}",
+  "m.settings": "Ayarlar",
+  "m.language": "Dil",
+  "m.language.system": "Sistem dili",
+  "m.defaults.confirm": "Üç etkinliğin uyarıları varsayılan değerlere sıfırlansın mı?",
+  "m.cancel": "İptal",
+  "m.ok": "Tamam",
+  "m.sound.voice": "Ses: {0}",
+  "m.soundNote": "Uyarı sesi telefonun bildirim ses düzeyini izler ve sessiz modu dikkate alır."
+}

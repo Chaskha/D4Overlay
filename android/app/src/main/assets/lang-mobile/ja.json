@@ -1,0 +1,20 @@
+{
+  "m.notif.channel": "イベント通知",
+  "m.notif.text": "{0} 分後に開始（{1}）",
+  "m.perm.notif": "通知がオフになっています。アラートは届きません。",
+  "m.perm.exact": "正確なアラームが許可されていません。アラートが数分遅れることがあります。",
+  "m.perm.grant": "許可",
+  "m.refresh": "更新",
+  "m.refreshing": "更新中…",
+  "m.nextAlert": "次のアラート：{0}",
+  "m.noAlert": "予定されたアラートはありません。",
+  "m.upcoming": "次回：{0}",
+  "m.settings": "設定",
+  "m.language": "言語",
+  "m.language.system": "システムの言語",
+  "m.defaults.confirm": "3 つのイベントのアラートを初期設定に戻しますか？",
+  "m.cancel": "キャンセル",
+  "m.ok": "OK",
+  "m.sound.voice": "音声：{0}",
+  "m.soundNote": "アラート音はスマートフォンの通知音量に従い、マナーモードを尊重します。"
+}

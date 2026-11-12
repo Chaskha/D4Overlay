@@ -1,0 +1,20 @@
+{
+  "m.notif.channel": "Alertes des évènements",
+  "m.notif.text": "Commence dans {0} min (à {1})",
+  "m.perm.notif": "Les notifications sont désactivées : tu ne recevras aucune alerte.",
+  "m.perm.exact": "Les alarmes exactes ne sont pas autorisées : les alertes peuvent arriver avec quelques minutes de retard.",
+  "m.perm.grant": "Autoriser",
+  "m.refresh": "Actualiser",
+  "m.refreshing": "Actualisation…",
+  "m.nextAlert": "Prochaine alerte à {0}",
+  "m.noAlert": "Aucune alerte programmée.",
+  "m.upcoming": "Ensuite : {0}",
+  "m.settings": "Réglages",
+  "m.language": "Langue",
+  "m.language.system": "Langue du système",
+  "m.defaults.confirm": "Remettre les alertes des trois évènements à leurs valeurs par défaut ?",
+  "m.cancel": "Annuler",
+  "m.ok": "OK",
+  "m.sound.voice": "Voix : {0}",
+  "m.soundNote": "Le son des alertes suit le volume des notifications du téléphone et respecte le mode silencieux."
+}
