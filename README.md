@@ -70,5 +70,16 @@ To reset everything: close the overlay and delete that folder.
 UNINSTALL
 Delete the application folder and the %AppData%\D4WorldBossOverlay folder.
 
+ANDROID VERSION
+A companion app for Android 8.0 and later: the same timers, plus sound alerts by notification, even when the app is closed.
+Download the APK (D4Overlay-<version>-release.apk) from the Releases page: https://github.com/Chaskha/D4Overlay/releases
+On the phone, open the file and allow installing apps from this source when Android asks.
+On first launch, allow notifications and exact alarms (needed for the alerts to ring on time).
+"Do Not Disturb" and silent mode are respected: the notification shows, without sound.
+Details (French): android/LISEZMOI.md
+
+PROJECT NOTES
+Architecture, decisions and working method (French): PROJET.md
+
 Event data comes from helltides.com.
 Mute / unmute feedback sound: derived from "SWSH Whoosh 2 (ID 0573)", La Sonotheque.
