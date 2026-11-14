@@ -16,5 +16,6 @@
   "m.cancel": "Anuluj",
   "m.ok": "OK",
   "m.sound.voice": "Głos: {0}",
-  "m.soundNote": "Dźwięk alertów zależy od głośności powiadomień telefonu i respektuje tryb cichy."
+  "m.soundNote": "Dźwięk alertów zależy od głośności powiadomień telefonu i respektuje tryb cichy.",
+  "m.banner": "Baner nagłówka"
 }

@@ -22,14 +22,16 @@ fun formatCountdown(ms: Long): String {
 
 /**
  * Valeur d'un timer, mêmes règles que OverlayForm.RefreshCountdowns : « 01:23:45 » avant le début,
- * « ACTIF 00:41:10 » pendant la fenêtre active (Helltide), « APPARU » juste après un World Boss / une Legion.
+ * pendant la fenêtre active : temps restant seul pour la Helltide, « ACTIF 00:00:07 » pour les autres ;
+ * « APPARU » une fois la fenêtre passée.
  */
 fun timerValue(spawn: Spawn, nowMs: Long): String {
     val kind: EventKind = spawn.kind
     val remaining = spawn.startMs - nowMs
     if (remaining > 0) return formatCountdown(remaining)
     val since = -remaining
-    return if (since < kind.activeWindowMs)
-        "${Loc.t("overlay.up")} ${formatCountdown(kind.activeWindowMs - since)}"
-    else Loc.t("overlay.spawned")
+    if (since >= kind.activeWindowMs) return Loc.t("overlay.spawned")
+    val left = formatCountdown(kind.activeWindowMs - since)
+    // Helltide : active 55 min sur 60, « ACTIF » va de soi (demande d'Arnaud) ; on garde le temps restant seul.
+    return if (kind == EventKind.HELLTIDE) left else "${Loc.t("overlay.up")} $left"
 }

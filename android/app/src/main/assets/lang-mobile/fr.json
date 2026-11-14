@@ -16,5 +16,6 @@
   "m.cancel": "Annuler",
   "m.ok": "OK",
   "m.sound.voice": "Voix : {0}",
-  "m.soundNote": "Le son des alertes suit le volume des notifications du téléphone et respecte le mode silencieux."
+  "m.soundNote": "Le son des alertes suit le volume des notifications du téléphone et respecte le mode silencieux.",
+  "m.banner": "Bannière d’en-tête"
 }

@@ -16,5 +16,6 @@
   "m.cancel": "Annulla",
   "m.ok": "OK",
   "m.sound.voice": "Voce: {0}",
-  "m.soundNote": "Il suono degli avvisi segue il volume delle notifiche del telefono e rispetta la modalità silenziosa."
+  "m.soundNote": "Il suono degli avvisi segue il volume delle notifiche del telefono e rispetta la modalità silenziosa.",
+  "m.banner": "Banner di intestazione"
 }

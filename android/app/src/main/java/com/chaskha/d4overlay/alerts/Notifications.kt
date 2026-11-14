@@ -7,6 +7,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.AudioManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -28,6 +29,22 @@ object Notifications {
                 enableVibration(true)
             }
         ctx.getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
+    }
+
+    /**
+     * L'appli joue elle-même le son du palier : Android ne le coupe donc pas tout seul.
+     * Pas de son si le téléphone est en vibreur / silencieux, ni en « Ne pas déranger »,
+     * sauf si l'utilisateur a autorisé ce canal à ignorer « Ne pas déranger » dans les réglages Android.
+     */
+    fun soundAllowed(ctx: Context): Boolean {
+        val audio = ctx.getSystemService(AudioManager::class.java)
+        if (audio.ringerMode != AudioManager.RINGER_MODE_NORMAL) return false
+        val nm = ctx.getSystemService(NotificationManager::class.java)
+        return when (nm.currentInterruptionFilter) {
+            NotificationManager.INTERRUPTION_FILTER_ALL, NotificationManager.INTERRUPTION_FILTER_UNKNOWN -> true
+            NotificationManager.INTERRUPTION_FILTER_PRIORITY -> nm.getNotificationChannel(CHANNEL_ALERTS)?.canBypassDnd() == true
+            else -> false // « Alarmes uniquement », « Silence total »
+        }
     }
 
     fun permitted(ctx: Context): Boolean =

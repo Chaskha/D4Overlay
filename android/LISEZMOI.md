@@ -14,7 +14,27 @@ Prérequis : **Android Studio** (récent, Ladybug ou plus). Il apporte le SDK An
 1. Android Studio → *Open* → choisir le dossier `android/` (pas la racine du dépôt).
 2. Laisser la synchronisation Gradle se terminer (premier lancement : téléchargement de Gradle 8.10.2 et des dépendances).
 3. Brancher le téléphone en mode développeur (débogage USB) ou lancer un émulateur, puis ▶ *Run 'app'*.
-4. APK à partager : *Build → Build App Bundle(s) / APK(s) → Build APK(s)* → `app/build/outputs/apk/debug/app-debug.apk`.
+4. APK à partager : voir *Distribuer (APK signé)* ci-dessous. L'APK de debug ne sert qu'aux tests.
+
+## Distribuer (APK signé, GitHub Releases)
+
+**Une seule fois : la clé de signature.** Toutes les versions doivent être signées avec **la même clé**, sinon les utilisateurs devront désinstaller pour mettre à jour.
+
+1. Android Studio → *Build → Generate Signed App Bundle / APK…* → **APK** → *Next*.
+2. *Key store path* → *Create new…* :
+   - emplacement **hors du dépôt**, par exemple `D:\DEV\keys\d4overlay.jks` ;
+   - un mot de passe solide (le même pour *Password* et la clé, c'est plus simple) ;
+   - *Alias* : `d4overlay`, *Validity* : 25 ans (ou plus), *First and Last Name* : Arnaud (ou Chaskha) ; le reste est facultatif.
+3. **Sauvegarder** le fichier `.jks` + le mot de passe ailleurs (clé USB, gestionnaire de mots de passe). Sans eux, plus de mise à jour possible.
+
+**À chaque version :**
+
+1. Dans `app/build.gradle.kts` : augmenter `versionCode` de 1 (2, 3…) et changer `versionName` (« 1.0.1 »…). Android refuse une mise à jour dont le `versionCode` n'augmente pas.
+2. *Build → Generate Signed App Bundle / APK…* → **APK** → choisir la clé (Android Studio la propose déjà) → *Next* → variante **release** → *Create*.
+3. Le fichier est dans `android/app/release/D4Overlay-<version>-release.apk`.
+4. GitHub → dépôt → *Releases* → *Draft a new release* → tag `android-v1.0.0` → glisser l'APK → *Publish*.
+
+**Côté utilisateur :** télécharger l'APK depuis le téléphone, l'ouvrir, autoriser le navigateur à « installer des applis inconnues ». Play Protect peut afficher un avertissement (appli inconnue de Google) : *Installer quand même*.
 
 Tests de la logique (parsing de l'API, cadences, alertes) : clic droit sur `app/src/test` → *Run tests*, ou `gradlew test` une fois le wrapper généré.
 
@@ -29,7 +49,13 @@ La tâche Gradle `copySharedAssets` prend à chaque build :
 | `Shared/Assets/Lang/*.json` (12 langues) | `assets/lang/` |
 | `Packaging/defaults/sounds/*.mp3` (11 voix) | `assets/sounds/` |
 
-Une traduction corrigée côté Windows l'est donc aussi sur Android. Les textes **propres au mobile** (18 clés `m.*`) sont dans `app/src/main/assets/lang-mobile/*.json`, **mêmes clés dans les 12 fichiers** (UTF-8 sans BOM, LF).
+Une traduction corrigée côté Windows l'est donc aussi sur Android. Les textes **propres au mobile** (19 clés `m.*`) sont dans `app/src/main/assets/lang-mobile/*.json`, **mêmes clés dans les 12 fichiers** (UTF-8 sans BOM, LF).
+
+## Bannières d'en-tête
+
+Les originaux d'Arnaud (`app/assets/`, jusqu'à 3900 px, 45 Mo) **ne sont pas dans le build ni dans git**. L'appli embarque des versions réduites dans `app/src/main/assets/banners/` : bords transparents rognés (en ignorant les 8 px du bord de la toile, où le détourage laisse parfois un liseré), 1200 px de large. `metal.png` (la barre d'origine) est la bannière par défaut.
+
+Ajouter une bannière : déposer un PNG à fond transparent de ~1200 px de large dans `app/src/main/assets/banners/` ; elle apparaît automatiquement dans les réglages.
 
 ## Architecture
 
@@ -55,7 +81,8 @@ android/app/src/main/java/com/chaskha/d4overlay/
 ├─ i18n/Loc.kt                langues (fichiers de Windows + lang-mobile)
 └─ ui/
    ├─ MainActivity.kt         écran unique : cadre, statut, permissions, évènements, réglages, à propos
-   ├─ TimersCard.kt           barre de titre (res/drawable-nodpi/title_bar.png) + carte des timers et prochaine alerte
+   ├─ Banners.kt              bannière d'en-tête (assets/banners/*.png) + choix par miniatures dans les réglages
+   ├─ TimersCard.kt           carte des timers et prochaine alerte
    ├─ EventCard.kt            affichage / alarmes / paliers (minutes, son, volume, ▶ Tester)
    ├─ WebScheduleFetcher.kt   repli navigateur intégré (Cloudflare), appli ouverte seulement
    └─ Format.kt               heures et comptes à rebours
@@ -68,7 +95,7 @@ android/app/src/main/java/com/chaskha/d4overlay/
 - **Repli navigateur** : la page du site interroge /api/schedule toutes les 4 s ; sans résultat au bout de 12 s, l'adresse de l'API est ouverte directement (méthode Windows). Sur l'émulateur, Cloudflare répond 403 deux fois puis laisse passer (~8 s).
 - **Alertes** : mêmes paliers par défaut que Windows (8 / 4 / 2 min, Legion 4 / 2). Un palier dépassé à l'ouverture ou après un changement de réglage **ne sonne pas**. Plusieurs paliers dus en même temps (téléphone en veille) : un seul son, le plus proche. Une alerte en retard de plus de 10 min est abandonnée.
 - **Alarmes exactes** : sur Android 14+, il faut les autoriser (bannière rouge + bouton). Sans elles, les alertes peuvent arriver quelques minutes en retard.
-- **Son** : flux « notification » du téléphone, donc **respecte le mode silencieux** ; volume du palier en plus (courbe quadratique). Lecture coupée à **9 s** (limite d'Android pour un réveil en arrière-plan ; Windows : 20 s).
+- **Son** : flux « notification » du téléphone, **pas de son en vibreur, silencieux ou « Ne pas déranger »** (la notification suit les règles d'Android). Pour être réveillé quand même : Réglages Android → Notifications de l'appli → canal « Alertes des évènements » → *Ignorer Ne pas déranger*. ▶ Tester joue toujours ; volume du palier en plus (courbe quadratique). Lecture coupée à **9 s** (limite d'Android pour un réveil en arrière-plan ; Windows : 20 s).
 - **Pas porté** (sans objet sur téléphone) : déplacement / échelle / opacité de l'overlay, raccourcis clavier, « seulement si Diablo IV tourne » (l'option est conservée dans alerts.json mais ignorée), démarrage avec Windows, import de cadres, de polices et de sons, sourdine rapide.
 - **Affichage** : pas de cadre d'overlay sur mobile. Barre de titre propre à Android, puis une carte arrondie : une ligne par timer (ordre World Boss, Legion, Helltide), « Prochaine alerte » et *Actualiser* en bas de la carte, source des données dans *À propos*.
 - **Police** : celle du système en gras (Comic Sans MS n'existe pas sur Android).
@@ -91,4 +118,4 @@ android/app/src/main/java/com/chaskha/d4overlay/
 - Le projet **n'a jamais été compilé** : il a été écrit sans SDK Android. Les erreurs de la première synchronisation Gradle / compilation sont à renvoyer à Claude telles quelles.
 - Passage de la vérification Cloudflare par le WebView : à confirmer sur un vrai téléphone.
 - Icône provisoire (sablier) : à remplacer par celle d'Arnaud (`res/drawable/ic_launcher_foreground.xml`, ou *New → Image Asset* dans Android Studio).
-- Pas de signature de version « release » ni de publication Play Store : APK de debug seulement pour l'instant.
+- Pas de publication Play Store pour l'instant (APK signé sur GitHub). Avant le Play Store : nom et icône sans la marque Diablo, cible Android à remonter, test fermé de 14 jours.

@@ -16,5 +16,6 @@
   "m.cancel": "Cancel",
   "m.ok": "OK",
   "m.sound.voice": "Voice: {0}",
-  "m.soundNote": "Alert sounds follow the phone's notification volume and respect silent mode."
+  "m.soundNote": "Alert sounds follow the phone's notification volume and respect silent mode.",
+  "m.banner": "Header banner"
 }

@@ -16,5 +16,6 @@
   "m.cancel": "İptal",
   "m.ok": "Tamam",
   "m.sound.voice": "Ses: {0}",
-  "m.soundNote": "Uyarı sesi telefonun bildirim ses düzeyini izler ve sessiz modu dikkate alır."
+  "m.soundNote": "Uyarı sesi telefonun bildirim ses düzeyini izler ve sessiz modu dikkate alır.",
+  "m.banner": "Başlık afişi"
 }

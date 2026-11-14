@@ -1,10 +1,8 @@
 package com.chaskha.d4overlay.ui
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
@@ -17,24 +15,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.chaskha.d4overlay.R
 import com.chaskha.d4overlay.data.EventAlertConfig
 import com.chaskha.d4overlay.data.EventKind
 import com.chaskha.d4overlay.data.Schedule
 import com.chaskha.d4overlay.i18n.Loc
-
-/** Barre de titre « Diablo IV Events » (image d'Arnaud, 960 × 260, fond transparent). */
-@Composable
-fun TitleBar(modifier: Modifier = Modifier) {
-    Image(
-        painterResource(R.drawable.title_bar), contentDescription = "Diablo IV Events",
-        modifier = modifier.fillMaxWidth().aspectRatio(960f / 260f), contentScale = ContentScale.Fit,
-    )
-}
 
 /**
  * Les timers, une ligne par évènement affiché : nom en couleur (et nom du boss pour le World Boss)

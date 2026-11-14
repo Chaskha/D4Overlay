@@ -10,6 +10,7 @@ import java.io.File
 object Store {
     private const val PREFS = "d4overlay"
     private const val KEY_LANGUAGE = "language"
+    private const val KEY_BANNER = "banner"
     private const val KEY_LAST_HANDLED = "alerts.lastHandledMs"
     private const val KEY_FETCHED_AT = "schedule.fetchedAtMs"
     private const val KEY_NEXT_ALERT = "alerts.nextAtMs"
@@ -45,6 +46,10 @@ object Store {
     /** "" = langue du système. */
     fun language(ctx: Context): String = prefs(ctx).getString(KEY_LANGUAGE, "") ?: ""
     fun setLanguage(ctx: Context, code: String) = prefs(ctx).edit().putString(KEY_LANGUAGE, code).apply()
+
+    /** Bannière d'en-tête : nom du fichier dans assets/banners, sans « .png ». */
+    fun banner(ctx: Context): String = prefs(ctx).getString(KEY_BANNER, "metal") ?: "metal"
+    fun setBanner(ctx: Context, id: String) = prefs(ctx).edit().putString(KEY_BANNER, id).apply()
 
     fun lastHandledMs(ctx: Context): Long = prefs(ctx).getLong(KEY_LAST_HANDLED, 0L)
     fun setLastHandledMs(ctx: Context, ms: Long) = prefs(ctx).edit().putLong(KEY_LAST_HANDLED, ms).apply()

@@ -29,8 +29,8 @@ android {
         applicationId = "com.chaskha.d4overlay"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 2
+        versionName = "1.0.1"
     }
 
     buildTypes {
@@ -57,6 +57,9 @@ android {
 }
 
 tasks.named("preBuild") { dependsOn(copySharedAssets) }
+
+// Nom du fichier produit : D4Overlay-1.0.0-release.apk (au lieu de app-release.apk).
+base { archivesName = "D4Overlay-${android.defaultConfig.versionName}" }
 
 dependencies {
     val composeBom = platform("androidx.compose:compose-bom:2024.12.01")

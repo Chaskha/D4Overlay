@@ -16,5 +16,6 @@
   "m.cancel": "Abbrechen",
   "m.ok": "OK",
   "m.sound.voice": "Stimme: {0}",
-  "m.soundNote": "Der Warnton folgt der Benachrichtigungslautstärke des Telefons und beachtet den Lautlos-Modus."
+  "m.soundNote": "Der Warnton folgt der Benachrichtigungslautstärke des Telefons und beachtet den Lautlos-Modus.",
+  "m.banner": "Kopfbanner"
 }

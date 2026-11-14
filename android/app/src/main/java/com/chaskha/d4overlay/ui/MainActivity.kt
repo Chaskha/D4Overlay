@@ -73,6 +73,7 @@ class MainActivity : ComponentActivity() {
     private var nextAlertAt by mutableLongStateOf(0L)
     /** Incrémenté au changement de langue : force le recalcul de tous les textes. */
     private var languageVersion by mutableStateOf(0)
+    private var banner by mutableStateOf(Banners.DEFAULT)
 
     private var refreshJob: Job? = null
     private var soundJob: Job? = null
@@ -86,6 +87,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         webFetcher = WebScheduleFetcher(this)
         configs = Store.loadAlerts(this)
+        banner = Store.banner(this)
         schedule = ScheduleRepository.current(this)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !Notifications.permitted(this)) {
@@ -202,7 +204,7 @@ class MainActivity : ComponentActivity() {
                 verticalArrangement = Arrangement.spacedBy(12.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                item { TitleBar(Modifier.widthIn(max = 560.dp)) }
+                item { TitleBar(banner, Modifier.widthIn(max = 560.dp)) }
                 item {
                     TimersCard(schedule, configs, now, nextAlertAt, refreshing, onRefresh = { refresh() })
                 }
@@ -278,6 +280,8 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
+            Text(Loc.t("m.banner"))
+            BannerPicker(banner) { id -> banner = id; Store.setBanner(this@MainActivity, id) }
             Text(Loc.t("m.soundNote"), style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
             OutlinedButton(onClick = onDefaults) { Text(Loc.t("btn.defaults")) }

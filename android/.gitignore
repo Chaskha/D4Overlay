@@ -9,3 +9,6 @@ captures/
 *.aab
 *.jks
 *.keystore
+# Originaux des bannières (45 Mo, non utilisés par le build) : l'appli embarque les versions réduites de
+# app/src/main/assets/banners. Les garder sauvegardés ailleurs.
+app/assets/
