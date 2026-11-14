@@ -25,7 +25,7 @@ object SoundPlayer {
     val builtIns = listOf("none", "asterisk", "exclamation", "hand", "question", "beep")
 
     /** Une alerte reçue en arrière-plan a environ 10 s pour se terminer : on coupe un peu avant. */
-    private const val MAX_PLAY_MS = 9_000L
+    const val MAX_PLAY_MS = 9_000L
     private const val SAMPLE_RATE = 44_100
 
     private val attributes = AudioAttributes.Builder()
@@ -37,13 +37,13 @@ object SoundPlayer {
     fun voices(ctx: Context): List<String> =
         (ctx.assets.list("sounds") ?: emptyArray()).filter { it.endsWith(".mp3", true) }.sorted()
 
-    /** Joue un son et attend la fin (au plus 9 s). */
-    suspend fun play(ctx: Context, sound: String, volumePercent: Int) {
+    /** Joue un son et attend la fin (au plus [maxMs], et jamais plus de 9 s). */
+    suspend fun play(ctx: Context, sound: String, volumePercent: Int, maxMs: Long = MAX_PLAY_MS) {
         if (sound.isBlank() || sound == "none") return
         val v = volumePercent.coerceIn(0, 100)
         if (v == 0) return
         val gain = (v / 100.0).pow(2).toFloat()
-        withTimeoutOrNull(MAX_PLAY_MS) {
+        withTimeoutOrNull(maxMs.coerceAtMost(MAX_PLAY_MS)) {
             if (sound.endsWith(".mp3", true) && sound in voices(ctx)) playAsset(ctx, sound, gain)
             else playTones(sound, gain)
         }
