@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="d4_background">#FF121014</color>
-    <color name="d4_icon_bg">#FF1A1416</color>
+    <color name="d4_icon_bg">#FF4D101F</color>
 
     <style name="Theme.D4Overlay" parent="android:Theme.Material.NoActionBar">
         <item name="android:windowBackground">@color/d4_background</item>

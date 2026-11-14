@@ -117,5 +117,5 @@ android/app/src/main/java/com/chaskha/d4overlay/
 
 - Le projet **n'a jamais été compilé** : il a été écrit sans SDK Android. Les erreurs de la première synchronisation Gradle / compilation sont à renvoyer à Claude telles quelles.
 - Passage de la vérification Cloudflare par le WebView : à confirmer sur un vrai téléphone.
-- Icône provisoire (sablier) : à remplacer par celle d'Arnaud (`res/drawable/ic_launcher_foreground.xml`, ou *New → Image Asset* dans Android Studio).
+- Icône : celle d'Arnaud (crâne et sablier) en version mobile, sans anneau ni étoiles, motif à 90 % pour rester dans la zone visible des découpes Android. Fichiers : `res/mipmap-xxxhdpi/ic_launcher_foreground.png` (432×432, fond `#4D101F`), `ic_launcher_monochrome.png` (icônes teintées d'Android 13+), `res/drawable/ic_notification.xml` (sablier blanc de la barre d'état).
 - Pas de publication Play Store pour l'instant (APK signé sur GitHub). Avant le Play Store : nom et icône sans la marque Diablo, cible Android à remonter, test fermé de 14 jours.
