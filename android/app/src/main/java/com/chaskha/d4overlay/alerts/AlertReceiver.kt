@@ -24,7 +24,9 @@ class AlertReceiver : BroadcastReceiver() {
             try {
                 val now = System.currentTimeMillis()
                 val triggers = AlertPlanner.allTriggers(ScheduleRepository.current(ctx, now), Store.loadAlerts(ctx), now)
-                val due = AlertPlanner.due(triggers, Store.lastHandledMs(ctx), now)
+                // Alertes coupées entre la programmation et le réveil : rien à jouer.
+                val due = if (!Store.alertsOn(ctx)) emptyList()
+                    else AlertPlanner.due(triggers, Store.lastHandledMs(ctx), now)
                 if (due.isNotEmpty()) {
                     Store.setLastHandledMs(ctx, due.maxOf { it.atMs })
                     due.forEach { Notifications.showAlert(ctx, it, now) }
@@ -49,6 +51,7 @@ class AlertReceiver : BroadcastReceiver() {
         val end = System.currentTimeMillis() + SoundPlayer.MAX_PLAY_MS
         triggers.forEachIndexed { i, t ->
             if (i > 0) delay(PAUSE_MS)
+            if (!Store.alertsOn(ctx)) return // « Couper les alertes » appuyé pendant la lecture
             val left = end - System.currentTimeMillis()
             if (left < MIN_SOUND_MS) {
                 Log.i("D4Alert", "plus le temps : ${triggers.size - i} son(s) sauté(s)")

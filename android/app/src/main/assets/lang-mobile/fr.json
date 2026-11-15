@@ -17,5 +17,11 @@
   "m.ok": "OK",
   "m.sound.voice": "Voix : {0}",
   "m.soundNote": "Le son des alertes suit le volume des notifications du téléphone et respecte le mode silencieux.",
-  "m.banner": "Bannière d’en-tête"
+  "m.banner": "Bannière d’en-tête",
+  "m.alertsOff": "Alertes coupées",
+  "m.notif.mute": "Couper les alertes",
+  "m.muted": "Alertes coupées. Réactive-les dans D4 Timers.",
+  "m.visible": "Afficher ce timer",
+  "m.version": "D4 Timers — version {0}",
+  "m.legal": "D4 Timers est un outil non officiel, réalisé par un fan. Il n'est ni affilié à Blizzard Entertainment, ni approuvé ou parrainé par elle. Diablo et Blizzard sont des marques ou des marques déposées de Blizzard Entertainment, Inc."
 }

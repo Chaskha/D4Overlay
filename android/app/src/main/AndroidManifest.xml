@@ -12,7 +12,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher"
-        android:label="D4 Overlay"
+        android:label="D4 Timers"
         android:supportsRtl="true"
         android:theme="@style/Theme.D4Overlay">
 
@@ -27,6 +27,7 @@
         </activity>
 
         <receiver android:name=".alerts.AlertReceiver" android:exported="false" />
+        <receiver android:name=".alerts.MuteReceiver" android:exported="false" />
 
         <receiver android:name=".alerts.SystemEventsReceiver" android:exported="true">
             <intent-filter>

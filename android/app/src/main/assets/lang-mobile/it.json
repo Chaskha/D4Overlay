@@ -17,5 +17,11 @@
   "m.ok": "OK",
   "m.sound.voice": "Voce: {0}",
   "m.soundNote": "Il suono degli avvisi segue il volume delle notifiche del telefono e rispetta la modalità silenziosa.",
-  "m.banner": "Banner di intestazione"
+  "m.banner": "Banner di intestazione",
+  "m.alertsOff": "Avvisi disattivati",
+  "m.notif.mute": "Disattiva avvisi",
+  "m.muted": "Avvisi disattivati. Riattivali in D4 Timers.",
+  "m.visible": "Mostra questo timer",
+  "m.version": "D4 Timers — versione {0}",
+  "m.legal": "D4 Timers è uno strumento non ufficiale creato da un fan. Non è affiliato, approvato né sponsorizzato da Blizzard Entertainment. Diablo e Blizzard sono marchi o marchi registrati di Blizzard Entertainment, Inc."
 }

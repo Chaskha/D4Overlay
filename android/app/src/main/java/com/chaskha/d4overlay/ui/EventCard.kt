@@ -59,7 +59,7 @@ fun EventCard(
                 .joinToString("  ·  ") { s -> formatClock(s.startMs) + (s.name?.let { " $it" } ?: "") }
             if (upcoming.isNotEmpty()) Text(Loc.t("m.upcoming", upcoming), style = MaterialTheme.typography.bodyMedium)
 
-            SwitchRow(Loc.t("ev.visible"), cfg.visible) { onChange(cfg.copy(visible = it)) }
+            SwitchRow(Loc.t("m.visible"), cfg.visible) { onChange(cfg.copy(visible = it)) }
             SwitchRow(Loc.t("ev.alarms"), cfg.enabled) { onChange(cfg.copy(enabled = it)) }
             if (!cfg.enabled) Hint(Loc.t("ev.hint.silent"))
 

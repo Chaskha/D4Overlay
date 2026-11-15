@@ -33,6 +33,12 @@ object SoundPlayer {
         .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
         .build()
 
+    /** Sons en cours : de quoi les arrêter (bouton « Couper les alertes » d'une notification). */
+    private val stoppers = java.util.concurrent.ConcurrentHashMap.newKeySet<() -> Unit>()
+
+    /** Arrête net tous les sons en cours. */
+    fun stopAll() = stoppers.toList().forEach { runCatching(it) }
+
     /** Voix disponibles (noms de fichiers, comme dans alerts.json : « WB-male.mp3 »…). */
     fun voices(ctx: Context): List<String> =
         (ctx.assets.list("sounds") ?: emptyArray()).filter { it.endsWith(".mp3", true) }.sorted()
@@ -52,6 +58,8 @@ object SoundPlayer {
     private suspend fun playAsset(ctx: Context, name: String, gain: Float) {
         val done = CompletableDeferred<Unit>()
         val player = MediaPlayer()
+        val stop: () -> Unit = { done.complete(Unit) } // le finally libère le lecteur, ce qui coupe le son
+        stoppers += stop
         try {
             ctx.assets.openFd("sounds/$name").use { fd ->
                 player.setDataSource(fd.fileDescriptor, fd.startOffset, fd.length)
@@ -66,6 +74,7 @@ object SoundPlayer {
         } catch (_: Exception) {
             playTones("exclamation", gain)
         } finally {
+            stoppers -= stop
             player.release()
         }
     }

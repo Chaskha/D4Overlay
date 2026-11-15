@@ -17,5 +17,11 @@
   "m.ok": "Tamam",
   "m.sound.voice": "Ses: {0}",
   "m.soundNote": "Uyarı sesi telefonun bildirim ses düzeyini izler ve sessiz modu dikkate alır.",
-  "m.banner": "Başlık afişi"
+  "m.banner": "Başlık afişi",
+  "m.alertsOff": "Uyarılar kapalı",
+  "m.notif.mute": "Uyarıları kapat",
+  "m.muted": "Uyarılar kapatıldı. D4 Timers'den yeniden açabilirsin.",
+  "m.visible": "Bu zamanlayıcıyı göster",
+  "m.version": "D4 Timers — sürüm {0}",
+  "m.legal": "D4 Timers, bir hayran tarafından hazırlanmış resmî olmayan bir araçtır. Blizzard Entertainment ile bağlantılı değildir; onun tarafından onaylanmamış veya desteklenmemiştir. Diablo ve Blizzard, Blizzard Entertainment, Inc. şirketinin ticari markaları veya tescilli ticari markalarıdır."
 }

@@ -71,6 +71,7 @@ class MainActivity : ComponentActivity() {
     private var exactAllowed by mutableStateOf(true)
     private var refreshing by mutableStateOf(false)
     private var nextAlertAt by mutableLongStateOf(0L)
+    private var alertsOn by mutableStateOf(true)
     /** Incrémenté au changement de langue : force le recalcul de tous les textes. */
     private var languageVersion by mutableStateOf(0)
     private var banner by mutableStateOf(Banners.DEFAULT)
@@ -106,9 +107,17 @@ class MainActivity : ComponentActivity() {
         super.onResume()
         updatePermissions()
         schedule = ScheduleRepository.current(this)
+        // Relu à chaque retour : le bouton « Couper les alertes » d'une notification a pu le changer.
+        alertsOn = Store.alertsOn(this)
         AlertScheduler.reschedule(this, prime = false)
         nextAlertAt = Store.nextAlertAtMs(this)
         if (ScheduleRepository.isStale(this)) refresh()
+    }
+
+    private fun changeAlertsOn(on: Boolean) {
+        alertsOn = on
+        AlertScheduler.setAlertsOn(this, on)
+        nextAlertAt = Store.nextAlertAtMs(this)
     }
 
     private fun updatePermissions() {
@@ -206,7 +215,11 @@ class MainActivity : ComponentActivity() {
             ) {
                 item { TitleBar(banner, Modifier.widthIn(max = 560.dp)) }
                 item {
-                    TimersCard(schedule, configs, now, nextAlertAt, refreshing, onRefresh = { refresh() })
+                    TimersCard(
+                        schedule, configs, now, nextAlertAt,
+                        alertsOn = alertsOn, onAlertsOnChange = { changeAlertsOn(it) },
+                        refreshing = refreshing, onRefresh = { refresh() },
+                    )
                 }
                 if (!notificationsAllowed) item {
                     Banner(Loc.t("m.perm.notif")) {
@@ -291,7 +304,7 @@ class MainActivity : ComponentActivity() {
     @Composable
     private fun AboutCard() {
         SectionCard(Loc.t("info.about.title")) {
-            Text(Loc.t("info.version", BuildConfig.VERSION_NAME))
+            Text(Loc.t("m.version", BuildConfig.VERSION_NAME))
             Text(Loc.t("info.credit"), style = MaterialTheme.typography.bodySmall)
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(Loc.t("info.dataBy"), style = MaterialTheme.typography.bodySmall)
@@ -308,7 +321,7 @@ class MainActivity : ComponentActivity() {
             TextButton(onClick = { openUrl("mailto:$CONTACT_EMAIL") }) { Text(CONTACT_EMAIL) }
             Text(Loc.t("info.donate.text"), style = MaterialTheme.typography.bodySmall)
             OutlinedButton(onClick = { openUrl(DONATE_URL) }) { Text(Loc.t("info.donate.button")) }
-            Text(Loc.t("info.legal.text"), style = MaterialTheme.typography.bodySmall,
+            Text(Loc.t("m.legal"), style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }

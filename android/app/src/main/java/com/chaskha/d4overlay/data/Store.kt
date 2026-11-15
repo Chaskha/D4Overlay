@@ -14,6 +14,7 @@ object Store {
     private const val KEY_LAST_HANDLED = "alerts.lastHandledMs"
     private const val KEY_FETCHED_AT = "schedule.fetchedAtMs"
     private const val KEY_NEXT_ALERT = "alerts.nextAtMs"
+    private const val KEY_ALERTS_ON = "alerts.on"
 
     private fun prefs(ctx: Context) = ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
     private fun alertsFile(ctx: Context) = File(ctx.filesDir, "alerts.json")
@@ -50,6 +51,10 @@ object Store {
     /** Bannière d'en-tête : nom du fichier dans assets/banners, sans « .png ». */
     fun banner(ctx: Context): String = prefs(ctx).getString(KEY_BANNER, "metal") ?: "metal"
     fun setBanner(ctx: Context, id: String) = prefs(ctx).edit().putString(KEY_BANNER, id).apply()
+
+    /** Interrupteur général : false = aucune alarme ni notification, quels que soient les réglages des évènements. */
+    fun alertsOn(ctx: Context): Boolean = prefs(ctx).getBoolean(KEY_ALERTS_ON, true)
+    fun setAlertsOn(ctx: Context, on: Boolean) = prefs(ctx).edit().putBoolean(KEY_ALERTS_ON, on).apply()
 
     fun lastHandledMs(ctx: Context): Long = prefs(ctx).getLong(KEY_LAST_HANDLED, 0L)
     fun setLastHandledMs(ctx: Context, ms: Long) = prefs(ctx).edit().putLong(KEY_LAST_HANDLED, ms).apply()

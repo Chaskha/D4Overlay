@@ -62,6 +62,9 @@ object Notifications {
             ctx, 0, Intent(ctx, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
             PendingIntent.FLAG_IMMUTABLE,
         )
+        val mute = PendingIntent.getBroadcast(
+            ctx, 1, Intent(ctx, MuteReceiver::class.java), PendingIntent.FLAG_IMMUTABLE,
+        )
         val notification = NotificationCompat.Builder(ctx, CHANNEL_ALERTS)
             .setSmallIcon(R.drawable.ic_notification)
             .setColor(spawn.kind.color.toInt())
@@ -70,6 +73,7 @@ object Notifications {
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setCategory(NotificationCompat.CATEGORY_REMINDER)
             .setContentIntent(open)
+            .addAction(0, Loc.t("m.notif.mute"), mute)
             .setAutoCancel(true)
             .setSilent(true)
             .setTimeoutAfter(maxOf(60_000L, spawn.startMs - nowMs + spawn.kind.activeWindowMs))

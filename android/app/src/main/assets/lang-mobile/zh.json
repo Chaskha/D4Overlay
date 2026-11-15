@@ -17,5 +17,11 @@
   "m.ok": "确定",
   "m.sound.voice": "语音：{0}",
   "m.soundNote": "提醒声音跟随手机的通知音量，并遵守静音模式。",
-  "m.banner": "顶部横幅"
+  "m.banner": "顶部横幅",
+  "m.alertsOff": "提醒已关闭",
+  "m.notif.mute": "关闭提醒",
+  "m.muted": "提醒已关闭。可在 D4 Timers 中重新开启。",
+  "m.visible": "显示此计时器",
+  "m.version": "D4 Timers — 版本 {0}",
+  "m.legal": "D4 Timers 是由粉丝制作的非官方工具,与暴雪娱乐(Blizzard Entertainment)无任何隶属关系,也未获其认可或赞助。Diablo 和 Blizzard 是 Blizzard Entertainment, Inc. 的商标或注册商标。"
 }

@@ -17,5 +17,11 @@
   "m.ok": "Aceptar",
   "m.sound.voice": "Voz: {0}",
   "m.soundNote": "El sonido de las alertas sigue el volumen de notificaciones del teléfono y respeta el modo silencio.",
-  "m.banner": "Banner de cabecera"
+  "m.banner": "Banner de cabecera",
+  "m.alertsOff": "Alertas desactivadas",
+  "m.notif.mute": "Desactivar alertas",
+  "m.muted": "Alertas desactivadas. Vuelve a activarlas en D4 Timers.",
+  "m.visible": "Mostrar este temporizador",
+  "m.version": "D4 Timers — versión {0}",
+  "m.legal": "D4 Timers es una herramienta no oficial creada por un aficionado. No está afiliada, respaldada ni patrocinada por Blizzard Entertainment. Diablo y Blizzard son marcas comerciales o marcas registradas de Blizzard Entertainment, Inc."
 }

@@ -17,5 +17,11 @@
   "m.ok": "OK",
   "m.sound.voice": "Stimme: {0}",
   "m.soundNote": "Der Warnton folgt der Benachrichtigungslautstärke des Telefons und beachtet den Lautlos-Modus.",
-  "m.banner": "Kopfbanner"
+  "m.banner": "Kopfbanner",
+  "m.alertsOff": "Alarme aus",
+  "m.notif.mute": "Alarme ausschalten",
+  "m.muted": "Alarme ausgeschaltet. In D4 Timers wieder einschalten.",
+  "m.visible": "Diesen Timer anzeigen",
+  "m.version": "D4 Timers — Version {0}",
+  "m.legal": "D4 Timers ist ein inoffizielles Fan-Werkzeug. Es steht in keiner Verbindung zu Blizzard Entertainment und wird weder von dieser Firma unterstützt noch gesponsert. Diablo und Blizzard sind Marken oder eingetragene Marken von Blizzard Entertainment, Inc."
 }

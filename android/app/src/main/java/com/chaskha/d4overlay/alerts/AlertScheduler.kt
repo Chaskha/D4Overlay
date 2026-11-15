@@ -28,8 +28,11 @@ object AlertScheduler {
         val now = System.currentTimeMillis()
         // Premier lancement (rien encore traité) : même règle qu'un amorçage.
         if (prime || Store.lastHandledMs(ctx) == 0L) Store.setLastHandledMs(ctx, maxOf(Store.lastHandledMs(ctx), now))
-        val triggers = AlertPlanner.allTriggers(ScheduleRepository.current(ctx, now), Store.loadAlerts(ctx), now)
-        val next = AlertPlanner.next(triggers, Store.lastHandledMs(ctx), now)
+        // Interrupteur général coupé : aucune alarme programmée.
+        val next = if (!Store.alertsOn(ctx)) null else AlertPlanner.next(
+            AlertPlanner.allTriggers(ScheduleRepository.current(ctx, now), Store.loadAlerts(ctx), now),
+            Store.lastHandledMs(ctx), now,
+        )
 
         val am = ctx.getSystemService(AlarmManager::class.java)
         val pi = pendingIntent(ctx)
@@ -42,6 +45,15 @@ object AlertScheduler {
         if (canScheduleExact(ctx)) am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, at, pi)
         else am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, at, pi)
         Store.setNextAlertAtMs(ctx, next.atMs)
+    }
+
+    /**
+     * Active ou coupe toutes les alertes. À la réactivation, les paliers déjà dépassés ne sonnent pas
+     * (pas de rafale de rattrapage).
+     */
+    fun setAlertsOn(ctx: Context, on: Boolean) {
+        Store.setAlertsOn(ctx, on)
+        reschedule(ctx, prime = true)
     }
 
     private fun pendingIntent(ctx: Context): PendingIntent =

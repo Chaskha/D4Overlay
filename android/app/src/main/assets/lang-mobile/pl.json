@@ -17,5 +17,11 @@
   "m.ok": "OK",
   "m.sound.voice": "Głos: {0}",
   "m.soundNote": "Dźwięk alertów zależy od głośności powiadomień telefonu i respektuje tryb cichy.",
-  "m.banner": "Baner nagłówka"
+  "m.banner": "Baner nagłówka",
+  "m.alertsOff": "Alerty wyłączone",
+  "m.notif.mute": "Wyłącz alerty",
+  "m.muted": "Alerty wyłączone. Włącz je ponownie w D4 Timers.",
+  "m.visible": "Pokaż ten licznik",
+  "m.version": "D4 Timers — wersja {0}",
+  "m.legal": "D4 Timers to nieoficjalne narzędzie stworzone przez fana. Nie jest powiązane z Blizzard Entertainment, ani przez nią zatwierdzone lub sponsorowane. Diablo i Blizzard są znakami towarowymi lub zastrzeżonymi znakami towarowymi Blizzard Entertainment, Inc."
 }

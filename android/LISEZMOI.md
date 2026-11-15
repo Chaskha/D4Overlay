@@ -1,4 +1,4 @@
-# D4 Overlay — version Android
+# D4 Timers — version Android de D4 Overlay
 
 Application compagnon Android : les trois comptes à rebours (World Boss, Legion, Helltide) sous une barre de titre « Diablo IV Events », et des **alertes par notification + son** X minutes avant chaque évènement, même quand l'appli est fermée.
 Diablo IV ne tourne pas sur téléphone : il n'y a donc pas d'overlay par-dessus le jeu.
@@ -31,7 +31,7 @@ Prérequis : **Android Studio** (récent, Ladybug ou plus). Il apporte le SDK An
 
 1. Dans `app/build.gradle.kts` : augmenter `versionCode` de 1 (2, 3…) et changer `versionName` (« 1.0.1 »…). Android refuse une mise à jour dont le `versionCode` n'augmente pas.
 2. *Build → Generate Signed App Bundle / APK…* → **APK** → choisir la clé (Android Studio la propose déjà) → *Next* → variante **release** → *Create*.
-3. Le fichier est dans `android/app/release/D4Overlay-<version>-release.apk`.
+3. Le fichier est dans `android/app/release/D4Timers-<version>-release.apk`.
 4. GitHub → dépôt → *Releases* → *Draft a new release* → tag `android-v1.0.0` → glisser l'APK → *Publish*.
 
 **Côté utilisateur :** télécharger l'APK depuis le téléphone, l'ouvrir, autoriser le navigateur à « installer des applis inconnues ». Play Protect peut afficher un avertissement (appli inconnue de Google) : *Installer quand même*.
@@ -74,6 +74,7 @@ android/app/src/main/java/com/chaskha/d4overlay/
 ├─ alerts/
 │  ├─ AlertScheduler.kt       programme UNE alarme système : la prochaine alerte
 │  ├─ AlertReceiver.kt        réveil : notification + son, puis alarme suivante
+│  ├─ MuteReceiver.kt         bouton « Couper les alertes » des notifications
 │  ├─ SoundPlayer.kt          bips synthétisés (mêmes que Windows) et voix mp3
 │  ├─ Notifications.kt        canal « Alertes des évènements » (sans son : l'appli joue le sien)
 │  ├─ RefreshWorker.kt        actualisation toutes les ~30 min, appli fermée (WorkManager)
@@ -94,6 +95,7 @@ android/app/src/main/java/com/chaskha/d4overlay/
 - **Timer masqué** : sur Windows il ne sonne plus ; sur Android **ses alertes continuent** (sur téléphone, c'est la notification qui compte).
 - **Repli navigateur** : la page du site interroge /api/schedule toutes les 4 s ; sans résultat au bout de 12 s, l'adresse de l'API est ouverte directement (méthode Windows). Sur l'émulateur, Cloudflare répond 403 deux fois puis laisse passer (~8 s).
 - **Alertes** : mêmes paliers par défaut que Windows (8 / 4 / 2 min, Legion 4 / 2). Un palier dépassé à l'ouverture ou après un changement de réglage **ne sonne pas**. Plusieurs paliers dus en même temps (téléphone en veille) : un seul son, le plus proche. Plusieurs évènements en même temps (ex. World Boss et Helltide à la même heure) : leurs sons sont joués **à la suite**, du plus proche au plus lointain (au plus ~9 s en tout, limite d'Android pour un réveil en arrière-plan). Une alerte en retard de plus de 10 min est abandonnée.
+- **Couper toutes les alertes** : interrupteur en bas de la carte des timers, ou bouton « Couper les alertes » sur chaque notification (sans ouvrir l'appli ; coupe aussi le son en cours). Coupé = aucune alarme ni notification, réglages des évènements intacts. Réactivation depuis l'appli uniquement ; les paliers déjà dépassés ne sonnent pas.
 - **Alarmes exactes** : sur Android 14+, il faut les autoriser (bannière rouge + bouton). Sans elles, les alertes peuvent arriver quelques minutes en retard.
 - **Son** : flux « notification » du téléphone, **pas de son en vibreur, silencieux ou « Ne pas déranger »** (la notification suit les règles d'Android). Pour être réveillé quand même : Réglages Android → Notifications de l'appli → canal « Alertes des évènements » → *Ignorer Ne pas déranger*. ▶ Tester joue toujours ; volume du palier en plus (courbe quadratique). Lecture coupée à **9 s** (limite d'Android pour un réveil en arrière-plan ; Windows : 20 s).
 - **Pas porté** (sans objet sur téléphone) : déplacement / échelle / opacité de l'overlay, raccourcis clavier, « seulement si Diablo IV tourne » (l'option est conservée dans alerts.json mais ignorée), démarrage avec Windows, import de cadres, de polices et de sons, sourdine rapide.

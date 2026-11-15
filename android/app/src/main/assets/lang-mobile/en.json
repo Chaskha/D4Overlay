@@ -17,5 +17,11 @@
   "m.ok": "OK",
   "m.sound.voice": "Voice: {0}",
   "m.soundNote": "Alert sounds follow the phone's notification volume and respect silent mode.",
-  "m.banner": "Header banner"
+  "m.banner": "Header banner",
+  "m.alertsOff": "Alerts off",
+  "m.notif.mute": "Turn off alerts",
+  "m.muted": "Alerts turned off. Turn them back on in D4 Timers.",
+  "m.visible": "Show this timer",
+  "m.version": "D4 Timers — version {0}",
+  "m.legal": "D4 Timers is an unofficial fan-made tool. It is not affiliated with, endorsed or sponsored by Blizzard Entertainment. Diablo and Blizzard are trademarks or registered trademarks of Blizzard Entertainment, Inc."
 }

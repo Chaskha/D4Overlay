@@ -17,5 +17,11 @@
   "m.ok": "OK",
   "m.sound.voice": "音声：{0}",
   "m.soundNote": "アラート音はスマートフォンの通知音量に従い、マナーモードを尊重します。",
-  "m.banner": "ヘッダーバナー"
+  "m.banner": "ヘッダーバナー",
+  "m.alertsOff": "アラートはオフです",
+  "m.notif.mute": "アラートをオフにする",
+  "m.muted": "アラートをオフにしました。D4 Timers で再びオンにできます。",
+  "m.visible": "このタイマーを表示",
+  "m.version": "D4 Timers — バージョン {0}",
+  "m.legal": "D4 Timers はファンが作成した非公式ツールです。Blizzard Entertainment とは提携しておらず、承認やスポンサーを受けたものでもありません。Diablo および Blizzard は Blizzard Entertainment, Inc. の商標または登録商標です。"
 }
